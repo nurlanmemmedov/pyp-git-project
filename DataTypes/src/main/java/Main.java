@@ -1,33 +1,64 @@
-package az.mycode;
-
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
-//        System.out.println(Test(12345));
-        System.out.println(GetElement(122134234));
+        System.out.println(powerOfElem(2, 5));
+        System.out.println(findIndexElem(234, 3));
+        System.out.println(lastElem(234));
+        System.out.println(oddIndexNum(233784456));
+    }
+    public static int oddIndexNum(int num) {
+        int result = 0;
+        while (num > 10) {
+            result += lastElem(num);
+            result *= 10;
+            num /= 100;
+        }
+        return result/10;
     }
 
-//    public static int Test(int a) {
-//
-//        int Sum = 0;
-//        int i = 1;
-//        while (a > 10) {
-//            int on = 1;
-//            int k = i;
-//            while (k > 0) {
-//                on *= 10;
-//                k--;
-//            }
-//            Sum = Sum + (a % 10) * on;
-//            a = a / 10;
-//            i++;
-//        }
-//        return Sum + a;
-//
-//    }
+
+    public static int firstToLast(int num) {
+        return (num - firstElem(num) * powerOfElem(numOfElem(num) - 1, 10)) * 10 + firstElem(num);
+    }
+
+
+    public static int firstElem(int num) {
+        while (num > 10) {
+            num /= 10;
+        }
+        return num;
+    }
+
+    public static int lastElem(int num) {
+        return num % 10;
+    }
+
+    public static int numOfElem(int num) {
+        int i = 0;
+        while (num > 0) {
+            num /= 10;
+            i++;
+        }
+        return i;
+    }
+
+    public static int findIndexElem(int num, int index) {
+        num %= powerOfElem(index, 10);
+
+        return num;
+
+    }
+
+
+    public static int powerOfElem(int power, int base) {
+        int result = 1;
+        for (int i = 0; i < power; i++) {
+            result *= base;
+        }
+        return result;
+    }
 
     public static int GetElement(int a) {
 
@@ -69,4 +100,6 @@ public class Main {
         return count;
     }
 
+
 }
+
