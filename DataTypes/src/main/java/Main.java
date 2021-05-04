@@ -1,52 +1,72 @@
-import java.io.Console;
+package az.mycode;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(mergeOdds(1000));
+
+//        System.out.println(Test(12345));
+        System.out.println(GetElement(122134234));
     }
 
-/*    public static int findPower(int number, int power){
-        while(power > 0){
-            number = number * 10;
-            power = power -1;
-        }
-        return number;
-    }
+//    public static int Test(int a) {
+//
+//        int Sum = 0;
+//        int i = 1;
+//        while (a > 10) {
+//            int on = 1;
+//            int k = i;
+//            while (k > 0) {
+//                on *= 10;
+//                k--;
+//            }
+//            Sum = Sum + (a % 10) * on;
+//            a = a / 10;
+//            i++;
+//        }
+//        return Sum + a;
+//
+//    }
 
-    public static int moveToEnd(int number){
-        var firstDigit = number;
-        var i = 0;
-        while (firstDigit > 10) {
-            i ++;
-            firstDigit = firstDigit / 10;
-        }
-        int newNumber = number - findPower(firstDigit, i);
-        var result = newNumber * 10 + firstDigit;
-        return result;
-    }*/
+    public static int GetElement(int a) {
 
-    public static int findPower(int number, int power){
-        while(power > 0){
-            number = number * 10;
-            power = power -1;
-        }
-        return number;
-    }
+        int Sum = 0;
+        int i = MyCount(a);
+        int b = a;
+        int on = 1;
 
-    public static int mergeOdds(int number){
-        var i = 0;
-        var k = 0;
-        int result = 0;
-        while (number > 0) {
-            i ++;
-            if (i % 2 == 1){
-                result = result + findPower(number % 10, k );
-                k ++;
+        while (a > 0) {
+            b = a % 10;
+            if (!IsEven(i)) {
+                Sum = Sum + b * on;
+                on*=10;
             }
-            number = number / 10;
+            a = a / 10;
+            i--;
         }
-        return  result;
+
+
+        return Sum;
+    }
+
+    public static boolean IsEven(int i) {
+        if (i % 2 == 0) {
+
+            return true;
+
+        }
+        return false;
+    }
+
+    public static int MyCount(int a) {
+
+        int count = 0;
+        while (a > 0) {
+            a = a / 10;
+            count++;
+        }
+        return count;
     }
 
 }
