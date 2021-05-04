@@ -1,46 +1,13 @@
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-
-//        System.out.println("1-1000 arasi eded daxil edin");
-//        Scanner scanner = new Scanner(System.in);
-//        int a = scanner.nextInt();
-//        if (a > 1 && a < 1000) {
-//            for (int i = 1; i <= a; i++) {
-//                if (i % 5 == 0 && sumNum(i) % 5 == 0) {
-//                    System.out.println(i);
-//                }
-//            }
-//        } else {
-//            System.out.println("Yanlish eded");
-//        }
-
-//        System.out.println(firstElem(52345));
-//        System.out.println(numOfElem(23456));
-//        System.out.println(powerOfElem(2, 3));
-//        System.out.println(firstToLast(7234345));
-
         System.out.println(powerOfElem(2, 5));
         System.out.println(findIndexElem(234, 3));
         System.out.println(lastElem(234));
         System.out.println(oddIndexNum(233784456));
-
-
     }
-
-    /*  public static int sumNum(int num) {
-          int sum = 0;
-          while (num > 0) {
-              sum += (num % 10);
-              num = num / 10;
-          }
-          return sum;
-      }
-  */
-
     public static int oddIndexNum(int num) {
         int result = 0;
         while (num > 10) {
@@ -91,6 +58,46 @@ public class Main {
             result *= base;
         }
         return result;
+    }
+
+    public static int GetElement(int a) {
+
+        int Sum = 0;
+        int i = MyCount(a);
+        int b = a;
+        int on = 1;
+
+        while (a > 0) {
+            b = a % 10;
+            if (!IsEven(i)) {
+                Sum = Sum + b * on;
+                on*=10;
+            }
+            a = a / 10;
+            i--;
+        }
+
+
+        return Sum;
+    }
+
+    public static boolean IsEven(int i) {
+        if (i % 2 == 0) {
+
+            return true;
+
+        }
+        return false;
+    }
+
+    public static int MyCount(int a) {
+
+        int count = 0;
+        while (a > 0) {
+            a = a / 10;
+            count++;
+        }
+        return count;
     }
 
 
